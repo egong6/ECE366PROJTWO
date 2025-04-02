@@ -1,0 +1,17 @@
+main:
+    li  $t4, 0     
+
+loop_n:
+   
+    move $a0, $t4
+
+ 
+    beq  $a0, $zero, return_0  
+
+  
+    li   $v0, 1      
+    beq  $a0, $v0, return_n  
+
+    li   $t0, 0     
+    li   $t1, 1      
+    li   $t2, 2      
