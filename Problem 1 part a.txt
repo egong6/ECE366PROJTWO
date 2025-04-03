@@ -1,30 +1,28 @@
-    .text
-    .globl main
+ .text 
+.globl main
 
-main:
-    addi $t4, $zero, 10   
+main: 
+     sub $s0,$s0,$s0 #0 , a
+     sub $s1,$s1,$s1 
+     sub $s2,$s2,$s2
+     sub $t0,$t0,$t0 
+     addi $s1,$s1,1 #1 , b
 
-    ble  $t4, $zero, return_n
+     addi $s2,$zero,10 #input
 
-    addi $t0, $zero, 0
-    addi $t1, $zero, 1  
-    addi $t2, $zero, 0  
+     beq $s2,$s0, returnNum
+     beq $s2, $s1, returnNum
+     bltz $s2, returnNum
+
+     bne $s2,0,loop
 
 loop:
-    beq  $t2, $t4, done 
-    add  $t3, $zero, $t1
-    add  $t1, $t0, $t1  
-    add  $t0, $zero, $t3 
-    addi $t2, $t2, 1     
+  subi $s2,$s2,1
+  add  $t1, $zero, $s1
+  add  $s1, $s0, $s1
+  add  $s0, $zero, $t1
+  
+  bne  $s2, $zero, loop
 
-    j loop
-
-done:
-    add  $v0, $zero, $t1 
-
-halt:  
-    beq  $zero, $zero, halt 
-
-return_n:
-    add  $v0, $zero, $t4  
-    j halt
+returnNum:
+    add  $s3, $zero, $s1
