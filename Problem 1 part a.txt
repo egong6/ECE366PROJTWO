@@ -1,43 +1,22 @@
- .text
-  .globl  main
+  .text
+    .globl main
 
 main:
-    li  $t4, 0     
-
-loop_n:
-   
-    move $a0, $t4
-
+     addi $t4,10
+     addi $v0, $zero,1
+     ble $t4,$v0, return_n
+     
+     addi $t0,$zero,0
+     addi $t1,$zero,1
+     
+     addi $t2,$zero,0
  
-    beq  $a0, $zero, return_0  
-
-  
-    li   $v0, 1      
-    beq  $a0, $v0, return_n  
-
-    li   $t0, 0     
-    li   $t1, 1      
-    li   $t2, 2      
-
-loop_fib:
-    beq  $t2, $a0, done   
-
-    add  $t3, $t0, $t1  
-    move $t0, $t1        
-    move $t1, $t3        
-    addi $t2, $t2, 1     
-
-    j loop_fib
-
-done:
-    move $v0, $t1        
-
-return_n:
-  
-    move $s0, $v0        
-
-return_0:
-    li $v0, 0              
-    
-    addi $t4, $t4, 1      
-    j loop_n
+ loop:
+ 	beq $t4,$t2,done
+ 	add $t3,$zero,$t1 
+ 	add $t1,$t0,$t1
+ 	add $t1,$zero,$t3
+ 	addi $t2,$t2,1
+ 	
+ 	j loop
+ done:	
