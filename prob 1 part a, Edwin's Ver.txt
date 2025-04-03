@@ -1,0 +1,19 @@
+.text 
+.globl main
+
+main: 
+sub $s0,$s0,$s0 #0
+sub $s1,$s1,$s1 
+sub $s2,$s2,$s2 
+addi $s1,$s1,1 #1
+addi $s2,$s2,$s2 #input
+
+beq $s2,$s0, returnNum
+beq $s2, $s1, returnNum
+bltz $s2, returnNum
+
+
+
+returnNum:
+SW $s3, $s2
+
