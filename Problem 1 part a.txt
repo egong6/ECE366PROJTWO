@@ -5,6 +5,7 @@ main:
    addi $s0,$zero,0 #a=0
    addi $s1,$zero,1 #b=1
    addi $s2,$zero,10 # n=10 this is use for fib
+   subi $s2,$s2,1 #n -1
 
    ble $s2,1,return_n #if n<=1 return
    
