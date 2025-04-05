@@ -20,3 +20,15 @@ loop:
    add $s4,$zero,$s1 
      
 
+
+
+.text 
+.globl main
+
+division:
+	addi $t0,$zero,0 #quotient = 0
+  loop:
+  	bgt $t1,$t2,return_n #if  x>y
+  	subi $t1,$t1,$t2     #x=x-y
+  	addi $t0,$t0,1	     #quotient = quotient+1
+
