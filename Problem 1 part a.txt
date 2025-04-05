@@ -2,27 +2,20 @@
 .globl main
 
 main: 
-     sub $s0,$s0,$s0 #0 , a
-     sub $s1,$s1,$s1 
-     sub $s2,$s2,$s2
-     sub $t0,$t0,$t0 
-     addi $s1,$s1,1 #1 , b
+   addi $s0,$zero,0 #a=0
+   addi $s1,$zero,1 #b=1
+   addi $s2,$zero,10 # n=10 this is use for fib
 
-     addi $s2,$zero,10 #input
-
-     beq $s2,$s0, returnNum
-     beq $s2, $s1, returnNum
-     bltz $s2, returnNum
-
-     bne $s2,0,loop
-
+   ble $s2,1,return_n #if n<=1 return
+   
 loop:
-  subi $s2,$s2,1
-  add  $t1, $zero, $s1
-  add  $s1, $s0, $s1
-  add  $s0, $zero, $t1
-  
-  bne  $s2, $zero, loop
+     subi $s2,$s2,1 # for i (n-1)
+     add $s3,$zero,$s1 #temp = b
+     add $s1,$s0,$s1 # b = a+b
+     add $s0,$zero,$s3 # a=temp
+     bne $s2,$zero,loop # if n>0 keep looping
+     
+ return_n:
+   add $s4,$zero,$s1 
+     
 
-returnNum:
-    add  $s3, $zero, $s1
