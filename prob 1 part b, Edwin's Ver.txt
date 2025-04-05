@@ -2,17 +2,16 @@
 .globl main
 
 main: 
-addi $s0,$zero,0 # x
-addi $s1,$zero,1 # y
+addi $s0,$zero,10 # x
+addi $s1,$zero,4 # y
 addi $s3,$s3,0 # quotient
-   
-bgt $s0,$s1,loop
+
+ble $s0,$s1,return_x
    
 loop:
 sub $s0,$s0,$s1
 addi $s3,$s3,1
-ble $s0,$s1,return_x
- return_x:
- add $s4,$zero,$s0
-     
+bge $s0,$s1,loop
 
+return_x:
+add $s4,$zero,$s0
