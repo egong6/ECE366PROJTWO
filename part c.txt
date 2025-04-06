@@ -1,0 +1,47 @@
+.text
+.globl main
+
+main:
+sub $s0,$s0,$s0
+sub $s1,$s1,$s1
+sub $s2,$s2,$s2
+sub $s3,$s3,$s3
+sub $s4,$s4,$s4    
+sub $s5,$s5,$s5    
+addi $s0,$zero,0 # a
+addi $s1,$zero,1 # b
+addi $s2,$zero,5 # n, input
+subi $s2,$s2,1 
+
+ble $s2,1,return_n 
+
+Fibloop:
+subi $s2,$s2,1 
+add $s3,$zero,$s1 
+add $s1,$s0,$s1 
+add $s0,$zero,$s3 
+bne $s2,$zero,Fibloop 
+
+return_n:
+add $s4,$zero,$s1
+bnez $s4,divOdd
+
+divOdd:
+addi $t1,$zero,2       
+sub  $t3,$t3,$t3
+ble $s0,$s1,return_x
+
+Divloop:
+sub $s4,$s4,$t1
+addi $t3,$t3,1
+bge $s4,$t1,Divloop
+
+return_x:
+add $t4,$zero,$s4
+beqz $t4,oddFalse  
+
+oddTrue:
+addi $s5,$s5,1  
+
+oddFalse:
+addi $s5,$s5,0  
