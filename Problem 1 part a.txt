@@ -32,3 +32,13 @@ division:
   	subi $t1,$t1,$t2     #x=x-y
   	addi $t0,$t0,1	     #quotient = quotient+1
 
+
+
+
+odd: 
+   addi $s5,$zero,0 #remainder = 0
+   addi $s5,$zero,main #remainder = devision
+   
+loop:
+ beq $s5,$zero,0 #if remainder==0
+
