@@ -2,8 +2,8 @@
 .globl main
 
 main: 
-addi $s0,$zero,10 # x
-addi $s1,$zero,4 # y
+addi $s0,$zero,7 # x = m
+addi $s1,$zero,2 # y
 addi $s3,$s3,0 # quotient
 
 ble $s0,$s1,return_x
