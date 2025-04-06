@@ -35,10 +35,12 @@ division:
 
 
 
+
 odd: 
    addi $s5,$zero,0 #remainder = 0
    addi $s5,$zero,main #remainder = devision
    
 loop:
- beq $s5,$zero,0 #if remainder==0
-
+ beq $s5,0,return_1 #if remainder = 0 return true
+ bne $s5,0,return_0 # if remainder != 0 return false
+ 
